@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SenimGeo — География платформасы</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Leaflet Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+       <div class="logo">
+    <div class="logo-icon">
+        <img src="logo.png" alt="SenimGeo">
+    </div>
+
+    <div>
+        <h2>SenimGeo</h2>
+        <span>География платформасы</span>
+    </div>
+</div>
+
+        <nav>
+            <button class="nav-item active" data-page="dashboard">
+                🏠 Басты бет
+            </button>
+
+            <button class="nav-item" data-page="tests">
+                📝 Тесттер
+            </button>
+
+            <button class="nav-item" data-page="students">
+                👨‍🎓 Оқушылар
+            </button>
+
+            <button class="nav-item" data-page="map">
+                🗺 Интерактив карта
+            </button>
+
+            <button class="nav-item" data-page="materials">
+                📚 Материалдар
+            </button>
+            <button class="nav-item" data-page="progress">
+                    📈 Прогресс
+            </button>
+            <button class="nav-item" data-page="ubt">
+    🎓 ҰБТ
+</button>
+          
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="teacher-card">
+                <div class="teacher-avatar">
+    <img src="yer.jpeg" alt="Мұғалім">
+</div>
+                <div>
+                    <strong>География мұғалімі</strong>
+                    <small>Teacher account</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h1 id="pageTitle">Басты бет</h1>
+                <p>Географияны заманауи тәсілмен оқыту</p>
+            </div>
+
+            <div class="top-actions">
+                <button class="icon-button">🔔</button>
+                <div class="profile" onclick="openProfile()">
+
+    <div class="profile-avatar" id="profileAvatar">
+    <img src="yer.jpeg" alt="Профиль">
+</div>
+
+    <div class="profile-info">
+        <strong id="profileName">Қожабаев Ермұханбек</strong>
+    </div>
+
+</div>
+            </div>
+
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="page active" id="dashboard">
+
+            <div class="welcome">
+                <div>
+                    <span class="welcome-label">Қош келдіңіз!</span>
+                    <h2>География сабағын басқару оңай.</h2>
+                    <p>
+                        Тесттер жасаңыз, оқушылардың нәтижесін бақылаңыз
+                        және интерактивті картамен жұмыс жасаңыз.
+                    </p>
+                </div>
+
+                <div class="globe">🌎</div>
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">📝</div>
+                    <div>
+                        <span>Тесттер</span>
+                        <strong>10</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">👨‍🎓</div>
+                    <div>
+                        <span>Оқушылар</span>
+                        <strong>24</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">📊</div>
+                    <div>
+                        <span>Орташа нәтиже</span>
+                        <strong>82%</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">🌍</div>
+                    <div>
+                        <span>Карта нысандары</span>
+                        <strong>50+</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="section-header">
+                <div>
+                    <h2>Тест тақырыптары</h2>
+                    <p>Әр тақырыпта 10 тесттен</p>
+                </div>
+
+                <button class="primary-btn" onclick="openTests()">
+                    Барлық тесттер →
+                </button>
+            </div>
+
+
+
+            <div class="topic-grid">
+
+                <div class="topic-card" onclick="startTopic('world')">
+                    <div class="topic-image world">🌎</div>
+                    <h3>Дүниежүзі географиясы</h3>
+                    <p>10 тест • 10 сұрақ</p>
+                    <span>Бастау →</span>
+                </div>
+
+                <div class="topic-card" onclick="startTopic('kazakhstan')">
+                    <div class="topic-image kazakhstan">🇰🇿</div>
+                    <h3>Қазақстан географиясы</h3>
+                    <p>10 тест • 10 сұрақ</p>
+                    <span>Бастау →</span>
+                </div>
+
+                <div class="topic-card" onclick="startTopic('oceans')">
+                    <div class="topic-image oceans">🌊</div>
+                    <h3>Мұхиттар мен теңіздер</h3>
+                    <p>10 тест • 10 сұрақ</p>
+                    <span>Бастау →</span>
+                </div>
+
+                <div class="topic-card" onclick="startTopic('mountains')">
+                    <div class="topic-image mountains">⛰️</div>
+                    <h3>Таулар</h3>
+                    <p>10 тест • 10 сұрақ</p>
+                    <span>Бастау →</span>
+                </div>
+
+                
+
+            </div>
+            <!-- ================= MAPCHART ================= -->
+
+<div class="mapchart-card-link" onclick="window.open('https://www.mapchart.net/world.html','_blank')">
+    <div class="mapchart-icon">🗺️</div>
+    <div>
+        <h3>MapChart — Әлем картасы</h3>
+        <p>Өз картаңызды түстермен белгілеп, жүктеп алыңыз</p>
+    </div>
+    <div class="mapchart-arrow">↗</div>
+</div>
+
+        <!-- ==========================================
+     СЕЙСМИКАЛЫҚ БЕЛСЕНДІЛІК
+========================================== -->
+
+<div class="section-header seismic-header">
+    <div>
+        <span class="seismic-label">EARTHQUAKE SIMULATION</span>
+        <h2>Сейсмикалық белсенділік картасы</h2>
+        <p>Жер сілкінісінің эпицентрін оқу мақсатында модельдеу</p>
+    </div>
+
+    <div class="simulation-status">
+        <span class="status-dot"></span>
+        Оқу симуляциясы
+    </div>
+</div>
+
+
+<div class="seismic-card">
+
+    <!-- БАСҚАРУ БӨЛІГІ -->
+
+    <div class="seismic-controls">
+
+        <div class="control-group">
+
+            <label>Мемлекет</label>
+
+            <select id="seismicCountry">
+                <option value="kazakhstan">🇰🇿 Қазақстан</option>
+                <option value="turkey">🇹🇷 Түркия</option>
+                <option value="kyrgyzstan">🇰🇬 Қырғызстан</option>
+                <option value="china">🇨🇳 Қытай</option>
+                <option value="russia">🇷🇺 Ресей</option>
+            </select>
+
+        </div>
+
+
+        <div class="control-group">
+
+            <label>Облыс / қала</label>
+
+            <select id="seismicCity">
+            </select>
+
+        </div>
+
+
+        <button
+            class="simulate-earthquake"
+            onclick="simulateEarthquake()">
+
+            ⚡ Жер сілкінісін модельдеу
+
+        </button>
+
+    </div>
+
+
+    <!-- КАРТА -->
+
+    <div class="seismic-map-wrapper">
+
+        <div id="seismicMap"></div>
+
+
+        <!-- КАРТА ЛЕГЕНДАСЫ -->
+
+        <div class="seismic-legend">
+
+            <strong>Қауіп деңгейі</strong>
+
+            <div>
+                <span class="legend-circle red"></span>
+                Эпицентр
+            </div>
+
+            <div>
+                <span class="legend-circle orange"></span>
+                Жоғары қауіп
+            </div>
+
+            <div>
+                <span class="legend-circle yellow"></span>
+                Ескерту аймағы
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- НӘТИЖЕ -->
+
+    <div
+        id="earthquakeResult"
+        class="earthquake-result">
+
+        <div class="earthquake-placeholder">
+
+            <span>🌍</span>
+
+            <div>
+                <strong>Эпицентрді таңдаңыз</strong>
+                <p>
+                    Мемлекет пен облыс/қаланы таңдап,
+                    симуляцияны бастаңыз.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+ </section>
+        <!-- ==========================================
+     ПРОГРЕСС БЕТІ
+========================================== -->
+
+<section id="progress" class="page">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Прогресс</h2>
+            <p>Оқушылардың тест нәтижелерін бақылау</p>
+        </div>
+
+    </div>
+
+
+    <!-- ЖАЛПЫ СТАТИСТИКА -->
+
+    <div class="progress-stat-grid">
+
+        <div class="progress-stat">
+            <span>Қатысушылар</span>
+            <strong id="progressTotal">7</strong>
+        </div>
+
+        <div class="progress-stat">
+            <span>Орташа нәтиже</span>
+            <strong id="progressAverage">0%</strong>
+        </div>
+
+        <div class="progress-stat">
+            <span>100% нәтиже</span>
+            <strong id="progressPerfect">0</strong>
+        </div>
+
+        <div class="progress-stat">
+            <span>Прогресс көрсеткендер</span>
+            <strong id="progressImproved">0</strong>
+        </div>
+
+    </div>
+
+
+    <!-- ЖЕКЕ ПРОГРЕСС -->
+
+    <div class="progress-results">
+
+        <div class="progress-results-title">
+
+            <div>
+                <h3>Қатысушылардың жеке прогресі</h3>
+                <p>
+                    Әр адамның 1-тест, 2-тест және 3-тест нәтижелері
+                </p>
+            </div>
+
+        </div>
+
+
+        <div id="progressResultsList"></div>
+
+    </div>
+
+</section>
+<!-- ================= ҰБТ ================= -->
+
+<section class="page" id="ubt">
+
+    <div class="section-header">
+        <div>
+            <h2>ҰБТ — Ұлттық бірыңғай тестілеу</h2>
+            <p>5 пән • 140 сұрақ • Нәтиже сақталады</p>
+        </div>
+    </div>
+
+    <!-- ОҚУШЫ АТЫ -->
+    <div class="ubt-name-card">
+        <label>Оқушының аты-жөні</label>
+        <input type="text" id="ubtStudentName" placeholder="Мысалы: Қожабаев Ермұханбек">
+        <button onclick="startUBT()">ҰБТ-ны бастау →</button>
+    </div>
+
+    <!-- ПӘНДЕР ТАҢДАУ -->
+    <div class="ubt-subjects" id="ubtSubjects" style="display:none;">
+        <div class="ubt-subject-card" onclick="openUBTSubject('kzHistory')">
+            <div class="ubt-icon">🇰🇿</div>
+            <h3>Қазақстан тарихы</h3>
+            <p>20 сұрақ</p>
+        </div>
+
+        <div class="ubt-subject-card" onclick="openUBTSubject('reading')">
+            <div class="ubt-icon">📖</div>
+            <h3>Оқу сауаттылығы</h3>
+            <p>10 сұрақ</p>
+        </div>
+
+        <div class="ubt-subject-card" onclick="openUBTSubject('math')">
+            <div class="ubt-icon">➗</div>
+            <h3>Математикалық сауаттылық</h3>
+            <p>10 сұрақ</p>
+        </div>
+
+        <div class="ubt-subject-card" onclick="openUBTSubject('geography')">
+            <div class="ubt-icon">🌍</div>
+            <h3>География</h3>
+            <p>50 сұрақ</p>
+        </div>
+
+        <div class="ubt-subject-card" onclick="openUBTSubject('worldHistory')">
+            <div class="ubt-icon">🏛️</div>
+            <h3>Дүниежүзі тарихы</h3>
+            <p>50 сұрақ</p>
+        </div>
+    </div>
+
+    <!-- НӘТИЖЕЛЕР -->
+    <div class="ubt-results" id="ubtResults">
+        <div class="ubt-results-header">
+            <h3>Тапсырған оқушылардың нәтижелері</h3>
+            <button class="ubt-clear-all" onclick="clearAllUBTResults()">
+                🗑️ Барлығын өшіру
+            </button>
+        </div>
+        <div id="ubtResultsList"></div>
+    </div>
+
+</section>
+
+        <!-- ================= TESTS ================= -->
+
+        <section class="page" id="tests">
+
+            <div class="section-header">
+                <div>
+                    <h2>География тесттері</h2>
+                    <p>Әр тақырыпта 10 тест</p>
+                </div>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter active" onclick="filterTests('all', this)">
+                    Барлығы
+                </button>
+
+                <button class="filter" onclick="filterTests('world', this)">
+                    Дүниежүзі
+                </button>
+
+                <button class="filter" onclick="filterTests('kazakhstan', this)">
+                    Қазақстан
+                </button>
+
+                <button class="filter" onclick="filterTests('oceans', this)">
+                    Мұхиттар
+                </button>
+
+                <button class="filter" onclick="filterTests('mountains', this)">
+                    Таулар
+                </button>
+            </div>
+
+
+            <div class="test-grid" id="testGrid"></div>
+            <div class="map-test-card" onclick="openMapTest()">
+
+    <div class="map-test-icon">
+        🗺️
+    </div>
+
+    <div class="map-test-info">
+        <span>ИНТЕРАКТИВТІ ТЕСТ</span>
+        <h3>Қазақстан облыстарын тап</h3>
+        <p>Картадан көрсетілген облысты тауып белгілеңіз</p>
+    </div>
+
+    <div class="map-test-arrow">→</div>
+
+</div>
+
+        </section>
+
+
+        <!-- ================= STUDENTS ================= -->
+
+        <section class="page" id="students">
+
+            <div class="section-header">
+                <div>
+                    <h2>Қатысушылар</h2>
+                    <p>Қатысушылардың монитрнингі</p>
+                </div>
+            </div>
+           
+
+            <div class="table-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Оқушы</th>
+                            <th>Сынып</th>
+                            <th>Тест</th>
+                            <th>Нәтиже</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Нұрмаханов Н.</td>
+                            <td>Мұғалім</td>
+                            <td>Дүниежүзі географиясы</td>
+                            <td>100%</td>
+                            <td><span class="status good">Жақсы</span></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Латиф Н.</td>
+                            <td>9Ж</td>
+                            <td>Дүниежүзі географиясы</td>
+                            <td>76%</td>
+                            <td><span class="status average">орташа</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Қиятова А.</td>
+                            <td>10А</td>
+                            <td>Қазақстан географиясы</td>
+                            <td>85%</td>
+                            <td><span class="status good">жақсы</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Бекен Н.</td>
+                            <td>Мұғалім</td>
+                            <td>Мұхиттар</td>
+                            <td>92%</td>
+                            <td><span class="status good">Өте жақсы</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Абушахма А.</td>
+                            <td>8Е</td>
+                            <td>Таулар</td>
+                            <td>68%</td>
+                            <td><span class="status low">Қайталау керек</span></td>
+                        </tr>
+
+                         <tr>
+                            <td>Қожабаев Е.</td>
+                            <td>Мұғалім</td>
+                            <td>Дүниежүзі Географиясы</td>
+                            <td>100%</td>
+                            <td><span class="status good">Өте жақсы</span></td>
+                        </tr>
+
+                         <tr>
+                            <td>Телібай А.</td>
+                            <td>7Д</td>
+                            <td>Мұхиттар мен Теңіздер</td>
+                            <td>79%</td>
+                            <td><span class="status average">орташа</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MAP ================= -->
+
+      <section class="page" id="map">
+
+    <div class="section-header">
+        <div>
+            <h2>Интерактивті карта</h2>
+            <p>Кез келген географиялық нысанды іздеңіз</p>
+        </div>
+    </div>
+
+    <div class="map-search">
+
+        <input
+            type="text"
+            id="mapSearchInput"
+            placeholder="Мысалы: Алматы, Эверест, Каспий теңізі..."
+        >
+
+        <button onclick="searchLocation()">
+            🔍 Іздеу
+        </button>
+
+    </div>
+
+    <div id="searchResult"></div>
+
+    <div class="big-map-card">
+        <div id="mainMap"></div>
+    </div>
+
+</section>
+
+
+        <!-- ================= MATERIALS ================= -->
+
+        <section class="page" id="materials">
+
+            <div class="section-header">
+                <div>
+                    <h2>Оқу материалдары</h2>
+                    <p>География бойынша пайдалы материалдар</p>
+                </div>
+            </div>
+
+            <div class="materials-grid">
+
+                <div class="material-card">
+                    <div>🌍</div>
+                    <h3>Дүниежүзі картасы</h3>
+                    <p>Материктер мен мұхиттарды зерттеу.</p>
+                </div>
+
+                <div class="material-card">
+                    <div>🇰🇿</div>
+                    <h3>Қазақстан картасы</h3>
+                    <p>Қазақстанның облыстары мен табиғи нысандары.</p>
+                </div>
+
+                <div class="material-card">
+                    <div>🌊</div>
+                    <h3>Мұхиттар</h3>
+                    <p>Мұхиттардың орналасуы және ерекшеліктері.</p>
+                </div>
+
+                <div class="material-card">
+                    <div>⛰️</div>
+                    <h3>Таулар</h3>
+                    <p>Әлемдегі ең биік таулар туралы ақпарат.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= QUIZ MODAL ================= -->
+
+<div class="modal" id="quizModal">
+
+    <div class="quiz-modal">
+
+        <button class="close-btn" onclick="closeQuiz()">×</button>
+
+        <div class="quiz-top">
+
+            <div>
+                <span id="quizTopic">Дүниежүзі географиясы</span>
+                <h2 id="quizTitle">Тест</h2>
+            </div>
+
+            <div class="question-number">
+                <span id="currentQuestion">1</span>/10
+            </div>
+
+        </div>
+
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+
+        <div class="quiz-content">
+
+            <div class="question-box">
+
+                <span class="question-label">Сұрақ</span>
+
+                <h2 id="questionText">
+                    Ең үлкен мұхит қайсы?
+                </h2>
+
+                <div class="answers" id="answers"></div>
+
+                <div id="answerResult"></div>
+
+                <button
+                    class="next-btn"
+                    id="nextButton"
+                    onclick="nextQuestion()"
+                    style="display:none;"
+                >
+                    Келесі сұрақ →
+                </button>
+
+            </div>
+
+
+            <div class="quiz-map-container">
+
+                <div class="map-info">
+                    <span>🗺️</span>
+                    <div>
+                        <strong id="mapTitle">Әлем картасы</strong>
+                        <small>Жауап бергеннен кейін нысан көрсетіледі</small>
+                    </div>
+                </div>
+
+                <div id="quizMap"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LEAFLET JS -->
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<!-- OUR JS -->
+<script src="script.js"></script>
+<div class="map-test-modal" id="mapTestModal">
+
+    <div class="map-test-window">
+
+        <button class="map-close" onclick="closeMapTest()">×</button>
+
+        <div class="map-test-top">
+
+            <div>
+                <span class="map-test-small">
+                    🇰🇿 ҚАЗАҚСТАН
+                </span>
+
+                <h2>Облысты картадан тап</h2>
+
+                <p id="mapQuestion">
+                    Облысты картадан көрсетіңіз
+                </p>
+            </div>
+
+            <div class="map-counter">
+                <span id="mapCurrent">1</span>/17
+            </div>
+
+        </div>
+
+        <div id="mapAnswerMessage"></div>
+
+        <div id="kazakhstanMap"></div>
+
+        <button
+            id="mapNextButton"
+            class="map-next"
+            onclick="nextMapQuestion()"
+            style="display:none;"
+        >
+            Келесі облыс →
+        </button>
+
+    </div>
+
+</div>
+<!-- ================= ҰБТ QUIZ MODAL ================= -->
+
+<div class="modal" id="ubtModal">
+    <div class="quiz-modal">
+
+        <button class="close-btn" onclick="closeUBT()">×</button>
+
+        <div class="quiz-top">
+            <div>
+                <span id="ubtTopic">ҰБТ</span>
+                <h2 id="ubtTitle">Пән</h2>
+            </div>
+            <div class="question-number">
+                <span id="ubtCurrent">1</span>/<span id="ubtTotal">10</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div id="ubtProgressBar"></div>
+        </div>
+
+        <div class="question-box" style="background:#f8fafc;border-radius:15px;padding:25px;">
+            <span class="question-label">Сұрақ</span>
+            <h2 id="ubtQuestionText">Сұрақ мәтіні</h2>
+            <div class="answers" id="ubtAnswers"></div>
+            <div id="ubtAnswerResult"></div>
+
+            <button class="next-btn" id="ubtNextButton" onclick="ubtNextQuestion()" style="display:none;">
+                Келесі сұрақ →
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1920 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f7fb;
+  color: #172033;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  width: 250px;
+  background: #ffffff;
+  border-right: 1px solid #e7ebf2;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 30px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+
+.logo h2 {
+  font-size: 18px;
+}
+
+.logo span {
+  font-size: 10px;
+  color: #8993a4;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.nav-item {
+  background: transparent;
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #687386;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background: #f0f5ff;
+  color: #2563eb;
+}
+
+.nav-item.active {
+  background: #eaf1ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.teacher-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f6f8fb;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.teacher-avatar {
+  width: 38px;
+  height: 38px;
+  background: #dce8ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teacher-card strong {
+  display: block;
+  font-size: 12px;
+}
+
+.teacher-card small {
+  color: #929baa;
+  font-size: 10px;
+}
+
+/* ================= MAIN ================= */
+
+.main {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 25px 35px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.topbar h1 {
+  font-size: 26px;
+}
+
+.topbar p {
+  color: #8791a2;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-button {
+  background: white;
+  border: 1px solid #e7ebf2;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.profile-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= PAGE ================= */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome {
+  background: linear-gradient(120deg, #2563eb, #4f8cff);
+  color: white;
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.welcome-label {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.welcome h2 {
+  font-size: 25px;
+  margin: 8px 0;
+}
+
+.welcome p {
+  max-width: 600px;
+  opacity: 0.9;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.globe {
+  font-size: 90px;
+  opacity: 0.8;
+}
+
+/* ================= STATS ================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 22px 0 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #e8ecf2;
+}
+
+.stat-card span {
+  display: block;
+  color: #8b95a5;
+  font-size: 12px;
+}
+
+.stat-card strong {
+  font-size: 24px;
+  display: block;
+  margin-top: 4px;
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.blue {
+  background: #e8f0ff;
+}
+
+.green {
+  background: #e8f9ef;
+}
+
+.orange {
+  background: #fff3df;
+}
+
+.purple {
+  background: #f1eaff;
+}
+
+/* ================= SECTIONS ================= */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 18px;
+}
+
+.section-header h2 {
+  font-size: 19px;
+}
+
+.section-header p {
+  color: #8993a4;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+/* ================= TOPICS ================= */
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.topic-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #e8ecf2;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(30, 50, 80, 0.08);
+}
+
+.topic-image {
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+}
+
+.topic-image.world {
+  background: #e9f1ff;
+}
+
+.topic-image.kazakhstan {
+  background: #e9f9f4;
+}
+
+.topic-image.oceans {
+  background: #e7f5ff;
+}
+
+.topic-image.mountains {
+  background: #f3edff;
+}
+
+.topic-card h3 {
+  font-size: 14px;
+  padding: 15px 15px 5px;
+}
+
+.topic-card p {
+  font-size: 11px;
+  color: #8c96a5;
+  padding: 0 15px;
+}
+
+.topic-card span {
+  display: block;
+  padding: 15px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ================= FILTER ================= */
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter {
+  padding: 9px 15px;
+  border-radius: 8px;
+  background: white;
+  color: #6d7787;
+  border: 1px solid #e4e8ee;
+}
+
+.filter.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* ================= TEST CARDS ================= */
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.test-card {
+  background: white;
+  border: 1px solid #e6eaf0;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.test-number {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.test-card h3 {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.test-card p {
+  color: #8993a4;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.start-test {
+  width: 100%;
+  padding: 10px;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+}
+
+/* ================= TABLE ================= */
+
+.table-card {
+  background: white;
+  border-radius: 15px;
+  border: 1px solid #e7ebf1;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 17px;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 12px;
+}
+
+th {
+  background: #f8fafc;
+  color: #778194;
+}
+
+.status {
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.status.good {
+  background: #e5f8ed;
+  color: #198754;
+}
+
+.status.average {
+  background: #fff3d9;
+  color: #ad7900;
+}
+
+.status.low {
+  background: #ffe8e8;
+  color: #d33b3b;
+}
+
+/* ================= MAP ================= */
+
+.big-map-card {
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#mainMap {
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
+}
+
+/* ================= MATERIALS ================= */
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.material-card {
+  background: white;
+  padding: 25px;
+  border: 1px solid #e7ebf1;
+  border-radius: 15px;
+}
+
+.material-card > div {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.material-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.material-card p {
+  color: #8993a4;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 24, 40, 0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.quiz-modal {
+  background: white;
+  width: min(1100px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 20px;
+  padding: 25px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #f1f4f8;
+  font-size: 22px;
+}
+
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 45px;
+}
+
+.quiz-top span {
+  color: #2563eb;
+  font-size: 12px;
+}
+
+.quiz-top h2 {
+  font-size: 21px;
+  margin-top: 5px;
+}
+
+.question-number {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.progress {
+  height: 6px;
+  background: #e8edf3;
+  border-radius: 10px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 10%;
+  background: #2563eb;
+  transition: 0.3s;
+}
+
+.quiz-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.question-box {
+  padding: 25px;
+  background: #f8fafc;
+  border-radius: 15px;
+}
+
+.question-label {
+  color: #8a94a4;
+  font-size: 11px;
+}
+
+.question-box h2 {
+  font-size: 20px;
+  margin: 10px 0 25px;
+  line-height: 1.4;
+}
+
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answer {
+  padding: 14px;
+  background: white;
+  border: 1px solid #dfe5ed;
+  border-radius: 10px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.answer:hover {
+  border-color: #2563eb;
+  background: #f3f7ff;
+}
+
+.answer.correct {
+  background: #e8f8ee;
+  border-color: #25a55b;
+  color: #13743d;
+}
+
+.answer.wrong {
+  background: #ffeaea;
+  border-color: #df4a4a;
+  color: #b62c2c;
+}
+
+#answerResult {
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.result-correct {
+  color: #198754;
+}
+
+.result-wrong {
+  color: #d33b3b;
+}
+
+.next-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border-radius: 9px;
+}
+
+.quiz-map-container {
+  background: #f8fafc;
+  border-radius: 15px;
+  padding: 12px;
+}
+
+.map-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+}
+
+.map-info span {
+  font-size: 25px;
+}
+
+.map-info strong {
+  display: block;
+  font-size: 13px;
+}
+
+.map-info small {
+  color: #8b95a5;
+  font-size: 10px;
+}
+
+#quizMap {
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topic-grid,
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .test-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quiz-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .logo h2,
+  .logo span,
+  .nav-item {
+    font-size: 0;
+  }
+
+  .main {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+    padding: 15px;
+  }
+
+  .topic-grid,
+  .test-grid,
+  .materials-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome {
+    padding: 20px;
+  }
+
+  .globe {
+    display: none;
+  }
+}
+.map-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.map-search input {
+  flex: 1;
+  padding: 15px 18px;
+  border: 1px solid #dfe3ea;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+}
+
+.map-search input:focus {
+  border-color: #2563eb;
+}
+
+.map-search button {
+  padding: 0 24px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.map-search button:hover {
+  background: #1d4ed8;
+}
+
+#searchResult {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #64748b;
+}
+/* ==================================
+   MAP TEST CARD
+================================== */
+
+.map-test-card {
+  margin-top: 25px;
+  padding: 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border: 1px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.map-test-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.map-test-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 16px;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.map-test-info {
+  flex: 1;
+}
+
+.map-test-info span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.map-test-info h3 {
+  margin: 5px 0;
+  font-size: 19px;
+}
+
+.map-test-info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.map-test-arrow {
+  font-size: 28px;
+  color: #2563eb;
+}
+
+/* ==================================
+   MAP MODAL
+================================== */
+
+.map-test-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 25px;
+}
+
+.map-test-modal.active {
+  display: flex;
+}
+
+.map-test-window {
+  width: min(1100px, 100%);
+  height: min(850px, 92vh);
+  background: white;
+  border-radius: 22px;
+  padding: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-close {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f9;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.map-test-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-right: 50px;
+  margin-bottom: 15px;
+}
+
+.map-test-small {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.map-test-top h2 {
+  margin: 5px 0;
+  font-size: 25px;
+}
+
+.map-test-top p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.map-counter {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+#mapAnswerMessage {
+  min-height: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#kazakhstanMap {
+  flex: 1;
+  min-height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.kazakhstan-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  background: #f8fafc;
+}
+
+.region-svg {
+  fill: #e2e8f0;
+  stroke: #475569;
+  stroke-width: 1.2;
+  cursor: pointer;
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease,
+    stroke-width 0.2s ease;
+}
+
+.region-svg:hover,
+.region-hover {
+  fill: #93c5fd;
+  stroke: #2563eb;
+  stroke-width: 2;
+}
+
+.map-next {
+  margin-top: 15px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.map-next:hover {
+  background: #1d4ed8;
+}
+
+.map-correct {
+  color: #16a34a;
+}
+
+.map-wrong {
+  color: #dc2626;
+}
+
+/* облыс */
+.region-default {
+  fill: #dbeafe;
+  fill-opacity: 0.85;
+  stroke: #2563eb;
+  stroke-width: 1.5;
+  transition: 0.2s;
+}
+
+.region-default:hover {
+  fill: #93c5fd;
+  cursor: pointer;
+}
+
+.region-wrong {
+  fill: #fecaca;
+  fill-opacity: 0.9;
+  stroke: #dc2626;
+  stroke-width: 2.5;
+}
+
+.region-correct {
+  fill: #86efac;
+  fill-opacity: 0.95;
+  stroke: #15803d;
+  stroke-width: 3;
+}
+
+@media (max-width: 700px) {
+  .map-test-card {
+    align-items: flex-start;
+  }
+
+  .map-test-arrow {
+    display: none;
+  }
+
+  .map-test-window {
+    height: 95vh;
+    padding: 18px;
+  }
+
+  .map-test-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+/* ==========================================
+   ПРОГРЕСС БЕТІ
+========================================== */
+
+.progress-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.progress-stat {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.progress-stat span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.progress-stat strong {
+  font-size: 28px;
+  color: #2563eb;
+}
+
+/* ==========================================
+   ПРОГРЕСС БӨЛІМІ
+========================================== */
+
+.progress-results {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.progress-results-title {
+  margin-bottom: 20px;
+}
+
+.progress-results-title h3 {
+  margin: 0 0 5px;
+  font-size: 20px;
+}
+
+.progress-results-title p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ==========================================
+   ӘР АДАМ
+========================================== */
+
+.individual-progress {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.individual-progress:last-child {
+  margin-bottom: 0;
+}
+
+.individual-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.individual-progress-header h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.individual-progress-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.final-result {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+/* ==========================================
+   ДИАГРАММА
+========================================== */
+
+.individual-chart {
+  width: 100%;
+  height: 260px;
+  margin-top: 15px;
+}
+
+.individual-chart canvas {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+/* ==========================================
+   НӘТИЖЕЛЕР
+========================================== */
+
+.individual-results {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.individual-results > div:not(.growth-result) {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 9px 15px;
+  text-align: center;
+}
+
+.individual-results span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.individual-results strong {
+  display: block;
+  color: #1e293b;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.result-arrow {
+  color: #94a3b8 !important;
+  font-size: 20px !important;
+}
+
+.growth-result {
+  margin-left: auto;
+  color: #16a34a;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ==========================================
+   АДАПТИВ
+========================================== */
+
+@media (max-width: 900px) {
+  .progress-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .progress-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .individual-progress-header {
+    align-items: flex-start;
+  }
+
+  .individual-results {
+    gap: 7px;
+  }
+
+  .growth-result {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+/* ==========================================
+   ПРОГРЕСС — БАСҚА БӨЛІМДЕРМЕН БІРДЕЙ ШРИФТ
+========================================== */
+
+#progress,
+#progress h2,
+#progress h3,
+#progress p,
+#progress span,
+#progress strong,
+#progress div {
+  font-family: 'Inter', sans-serif;
+}
+
+#progress .section-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+#progress .section-header p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#progress .progress-stat span {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#progress .progress-stat strong {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#progress .progress-results-title h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+#progress .progress-results-title p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#progress .individual-progress-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#progress .individual-progress-header p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#progress .final-result {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#progress .individual-results span {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+#progress .individual-results strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#progress .growth-result {
+  font-size: 12px;
+  font-weight: 700;
+}
+.nav-item {
+  background: transparent;
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #687386;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background: #f0f5ff;
+  color: #2563eb;
+}
+
+.nav-item.active {
+  background: #eaf1ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+/* ==========================================
+   СЕЙСМИКАЛЫҚ БЕЛСЕНДІЛІК КАРТАСЫ
+========================================== */
+
+.seismic-header {
+  margin-top: 35px;
+}
+
+.seismic-label {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.simulation-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #dcfce7;
+  padding: 9px 13px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+/* ==========================================
+   MAIN CARD
+========================================== */
+
+.seismic-card {
+  background: #ffffff;
+  border: 1px solid #e7ebf1;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.seismic-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-group label {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.control-group select {
+  width: 100%;
+  height: 45px;
+  padding: 0 13px;
+  border: 1px solid #dfe5ed;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+
+.control-group select:focus {
+  border-color: #2563eb;
+  background: white;
+}
+
+/* ==========================================
+   SIMULATION BUTTON
+========================================== */
+
+.simulate-earthquake {
+  height: 45px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.simulate-earthquake:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ==========================================
+   MAP
+========================================== */
+
+.seismic-map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#seismicMap {
+  width: 100%;
+  height: 560px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   LEGEND
+========================================== */
+
+.seismic-legend {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.12);
+  font-size: 11px;
+}
+
+.seismic-legend strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.seismic-legend div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+}
+
+.legend-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-circle.red {
+  background: #dc2626;
+}
+
+.legend-circle.orange {
+  background: #f97316;
+}
+
+.legend-circle.yellow {
+  background: #facc15;
+}
+
+/* ==========================================
+   RESULT
+========================================== */
+
+.earthquake-result {
+  margin-top: 16px;
+}
+
+.earthquake-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.earthquake-placeholder > span {
+  font-size: 30px;
+}
+
+.earthquake-placeholder strong {
+  display: block;
+  font-size: 14px;
+}
+
+.earthquake-placeholder p {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* ==========================================
+   EARTHQUAKE RESULT ACTIVE
+========================================== */
+
+.earthquake-active {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+}
+
+.earthquake-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: #fee2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+
+.earthquake-active strong {
+  display: block;
+  font-size: 15px;
+  color: #991b1b;
+}
+
+.earthquake-active p {
+  margin-top: 4px;
+  color: #9a3412;
+  font-size: 12px;
+}
+
+.earthquake-warning {
+  margin-left: auto;
+  background: #dc2626;
+  color: white;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .seismic-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .simulate-earthquake {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .seismic-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .simulate-earthquake {
+    grid-column: span 1;
+  }
+
+  #seismicMap {
+    height: 450px;
+  }
+
+  .seismic-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .simulation-status {
+    display: none;
+  }
+}
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.teacher-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.teacher-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.logo-icon img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.logo-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ==========================================
+   ҰБТ БЕТІ
+========================================== */
+
+.ubt-name-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 520px;
+  margin-bottom: 25px;
+}
+
+.ubt-name-card label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.ubt-name-card input {
+  padding: 13px 15px;
+  border: 1px solid #dfe5ed;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.ubt-name-card input:focus {
+  border-color: #2563eb;
+}
+
+.ubt-name-card button {
+  padding: 13px;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ubt-name-card button:hover {
+  background: #1d4ed8;
+}
+
+/* ПӘНДЕР */
+
+.ubt-subjects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.ubt-subject-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ubt-subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
+  border-color: #2563eb;
+}
+
+.ubt-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.ubt-subject-card h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.ubt-subject-card p {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* НӘТИЖЕЛЕР */
+
+.ubt-results {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.ubt-results h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.ubt-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #eef2f7;
+  margin-bottom: 10px;
+}
+
+.ubt-result-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.ubt-result-info span {
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.ubt-result-info small {
+  display: block;
+  color: #94a3b8;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.ubt-result-score {
+  font-size: 18px;
+  font-weight: 800;
+  color: #16a34a;
+  text-align: right;
+}
+
+.ubt-result-score span {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+.ubt-subjects-mini {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ubt-subject-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: #475569;
+  background: #f8fafc;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+
+.ubt-subject-line strong {
+  color: #2563eb;
+  font-weight: 700;
+}
+/* ҰБТ нәтижелер тақырыбы + батырма */
+
+.ubt-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ubt-clear-all {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ubt-clear-all:hover {
+  background: #fecaca;
+}
+
+/* Жеке өшіру батырмасы */
+
+.ubt-delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: 0.2s;
+  margin-top: 5px;
+}
+
+.ubt-delete-btn:hover {
+  background: #fee2e2;
+}
+.mapchart-card-link {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.mapchart-card-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.mapchart-icon {
+  width: 60px;
+  height: 60px;
+  background: #2563eb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.mapchart-card-link h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.mapchart-card-link p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.mapchart-arrow {
+  margin-left: auto;
+  font-size: 26px;
+  color: #2563eb;
+}
