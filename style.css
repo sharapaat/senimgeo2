@@ -1918,3 +1918,148 @@ th {
   font-size: 26px;
   color: #2563eb;
 }
+/* ==========================================
+   ҚМЖ БЕТІ
+========================================== */
+
+.kmj-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.kmj-tab {
+  padding: 12px 22px;
+  background: white;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.kmj-tab:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.kmj-tab.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.kmj-quarter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.kmj-quarter {
+  padding: 8px 16px;
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.kmj-quarter:hover {
+  background: #e2e8f0;
+}
+
+.kmj-quarter.active {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.kmj-file-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+}
+
+.kmj-file-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+}
+
+.kmj-file-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.1);
+}
+
+.kmj-file-icon {
+  width: 44px;
+  height: 44px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.kmj-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.kmj-file-info strong {
+  display: block;
+  font-size: 13px;
+  color: #1e293b;
+  margin-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kmj-file-info small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.kmj-file-arrow {
+  font-size: 20px;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.kmj-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px;
+  color: #94a3b8;
+  background: white;
+  border: 2px dashed #e2e8f0;
+  border-radius: 16px;
+}
+
+.kmj-empty p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .kmj-file-list {
+    grid-template-columns: 1fr;
+  }
+}
