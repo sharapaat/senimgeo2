@@ -1676,6 +1676,7 @@ function showPage(page) {
     materials: 'Материалдар',
     progress: 'Прогресс',
     ubt: 'ҰБТ',
+    kmj: 'ҚМЖ',
   };
 
   document.getElementById('pageTitle').textContent = titles[page] || 'GeoSmart';
@@ -1686,6 +1687,9 @@ function showPage(page) {
 
   if (page === 'ubt') {
     loadUBTResults();
+  }
+  if (page === 'kmj') {
+    renderKMJFiles();
   }
 }
 
@@ -1830,45 +1834,38 @@ function selectAnswer(selectedIndex, selectedButton) {
 
   const allButtons = document.querySelectorAll('.answer');
 
-  // Бір рет қана жауап беруге болады
   allButtons.forEach((button) => {
     button.disabled = true;
   });
 
-  // Дұрыс жауапты көрсету
   allButtons[q.correct].classList.add('correct');
 
   if (selectedIndex === q.correct) {
     score++;
-
     selectedButton.classList.add('correct');
-
     document.getElementById('answerResult').innerHTML = `
-            <div class="result-correct">
-                ✓ Дұрыс жауап!
-            </div>
-        `;
+      <div class="result-correct">
+        ✓ Дұрыс жауап!
+      </div>
+    `;
   } else {
     selectedButton.classList.add('wrong');
-
     document.getElementById('answerResult').innerHTML = `
-            <div class="result-wrong">
-                ✗ Қате жауап.
-                Дұрыс жауап:
-                <strong>${q.answers[q.correct]}</strong>
-            </div>
-        `;
+      <div class="result-wrong">
+        ✗ Қате жауап.
+        Дұрыс жауап:
+        <strong>${q.answers[q.correct]}</strong>
+      </div>
+    `;
   }
 
-  /*
-        Жауап бергеннен кейін
-        нақты географиялық нысанды көрсету
-    */
-
-  showCorrectLocation(q);
+  try {
+    showCorrectLocation(q);
+  } catch (e) {
+    console.warn('Карта қатесі:', e);
+  }
 
   const nextButton = document.getElementById('nextButton');
-
   nextButton.style.display = 'block';
 
   if (currentQuestionIndex === 9) {
@@ -1877,20 +1874,7 @@ function selectAnswer(selectedIndex, selectedButton) {
     nextButton.textContent = 'Келесі сұрақ →';
   }
 }
-try {
-  showCorrectLocation(q);
-} catch (e) {
-  console.warn('Карта қатесі:', e);
-}
 
-const nextButton = document.getElementById('nextButton');
-nextButton.style.display = 'block';
-
-if (currentQuestionIndex === 9) {
-  nextButton.textContent = 'Нәтижені көру';
-} else {
-  nextButton.textContent = 'Келесі сұрақ →';
-}
 /* =====================================================
    NEXT QUESTION
 ===================================================== */
@@ -3381,6 +3365,122 @@ if (seismicCountrySelect) {
 
 populateSeismicCities();
 initEarthquakeMap();
+/* =====================================================
+   ҚМЖ (ҚЫСҚА МЕРЗІМДІ ЖОСПАРЛАР)
+===================================================== */
+
+// Файлдар деректері — өзің осында файлдарды қосасың
+const kmjFiles = {
+  '7': {
+    '1': [
+      { name: '7 сынып 1 сабақ (пр)', file: 'files/7 сынып 1 сабақ пр.pdf' },
+      { name: '7 сынып 2 сабақ (пр)', file: 'files/7 сынып 2 сабақ пр.pdf' },
+      { name: '7 сынып 3 сабақ (пр)', file: 'files/7 сынып 3 сабақ пр.pdf' },
+      { name: '7 сынып 4 сабақ (пр)', file: 'files/7 сынып 4 сабақ пр.pdf' },
+      { name: '7 сынып 1 сабақ', file: 'files/7.1.1.1 .pdf' },
+      { name: '7 сынып 2 сабақ', file: 'files/7.1.1.2 .pdf' },
+      { name: '7 сынып 3 сабақ', file: 'files/7.1.1.3 .pdf' },
+      { name: '7 сынып 4 сабақ', file: 'files/7.1.1.4 .pdf' },
+    ],
+    '2': [], '3': [], '4': [],
+  },
+
+  '8': {
+    '1': [
+      { name: '8 сынып 1 сабақ (пр)', file: 'files/8 сынып 1 сабақ пр.pdf' },
+      { name: '8 сынып 1 сабақ', file: 'files/8 сынып 1 сабақ.pdf' },
+      { name: '8 сынып 2 сабақ (пр)', file: 'files/8 сынып 2 сабақ пр.pdf' },
+      { name: '8 сынып 2 сабақ', file: 'files/8 сынып 2 сабақ.pdf' },
+      { name: '8 сынып 3 сабақ (пр)', file: 'files/8 сынып 3 сабақ пр.pdf' },
+      { name: '8 сынып 3 сабақ', file: 'files/8 сынып 3 сабақ.pdf' },
+      { name: '8 сынып 4 сабақ (пр)', file: 'files/8 сынып 4 сабақ пр.pdf' },
+      { name: '8 сынып 4 сабақ', file: 'files/8 сынып 4 сабақ.pdf' },
+    ],
+    '2': [], '3': [], '4': [],
+  },
+
+  '9': {
+    '1': [
+      { name: '9 сынып 1 сабақ (пр)', file: 'files/9 сынып 1 сабақ пр.pdf' },
+      { name: '9 сынып 1 сабақ', file: 'files/9 сынып 1 сабақ.pdf' },
+      { name: '9 сабақ 2 сабақ', file: 'files/9 сабақ 2 сабақ.pdf' },
+      { name: '9 сынып 2 сабақ (пр)', file: 'files/9 сынып 2 сабақ пр.pdf' },
+      { name: '9 сабақ 3 сабақ', file: 'files/9 сабақ 3 сабақ.pdf' },
+      { name: '9 сынып 3 сабақ (пр)', file: 'files/9 сынып 3 сабақ пр.pdf' },
+      { name: '9 сынып 4 саб', file: 'files/9 сынып 4 саб.pdf' },
+      { name: '9 сынып 4 сабақ (пр)', file: 'files/9 сынып 4 сабақ пр.pdf' },
+    ],
+    '2': [], '3': [], '4': [],
+  },
+};
+
+let currentKMJClass = '7';
+let currentKMJQuarter = '1';
+
+function switchKMJClass(cls, btn) {
+  currentKMJClass = cls;
+  document.querySelectorAll('.kmj-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderKMJFiles();
+}
+
+function switchKMJQuarter(q, btn) {
+  currentKMJQuarter = q;
+  document.querySelectorAll('.kmj-quarter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderKMJFiles();
+}
+
+function renderKMJFiles() {
+  const list = document.getElementById('kmjFileList');
+  if (!list) return;
+
+  const files = (kmjFiles[currentKMJClass]?.[currentKMJQuarter]) || [];
+
+  if (files.length === 0) {
+    list.innerHTML = `
+      <div class="kmj-empty">
+        <div style="font-size:48px;">📂</div>
+        <p>Бұл тоқсанда әзірге файл жоқ.</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Ескі дизайнды сақтаймыз — тек реті өзгереді
+  // (пр) файлдары мен қалғандарын араластырып, бір қатарға қоямыз
+  const prFiles = files.filter(f => f.file.includes(' пр.'));
+  const otherFiles = files.filter(f => !f.file.includes(' пр.'));
+
+  // Екі тізімді кезекпен қосамыз: пр, басқа, пр, басқа...
+  const mixedFiles = [];
+  const maxLength = Math.max(prFiles.length, otherFiles.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    if (prFiles[i]) mixedFiles.push(prFiles[i]);
+    if (otherFiles[i]) mixedFiles.push(otherFiles[i]);
+  }
+
+  list.innerHTML = '';
+
+  mixedFiles.forEach(f => {
+    list.innerHTML += `
+      <a class="kmj-file-card" href="${f.file}" target="_blank" rel="noopener">
+        <div class="kmj-file-icon">📄</div>
+        <div class="kmj-file-info">
+          <strong>${f.name}</strong>
+          <small>${f.file.split('/').pop()}</small>
+        </div>
+        <div class="kmj-file-arrow">↗</div>
+      </a>
+    `;
+  });
+}
+
+// ҚМЖ беті ашылғанда файлдарды көрсету
+document.addEventListener('DOMContentLoaded', function () {
+  renderKMJFiles();
+});
 
 /* =====================================================
    START
