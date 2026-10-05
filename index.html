@@ -65,6 +65,9 @@
             <button class="nav-item" data-page="ubt">
     🎓 ҰБТ
 </button>
+<button class="nav-item" data-page="kmj">
+    📚 ҚМЖ
+</button>
           
         </nav>
 
@@ -467,6 +470,36 @@
         </div>
         <div id="ubtResultsList"></div>
     </div>
+
+</section>
+<!-- ================= ҚМЖ ================= -->
+
+<section class="page" id="kmj">
+
+    <div class="section-header">
+        <div>
+            <h2>Қысқа мерзімді жоспарлар (ҚМЖ)</h2>
+            <p>Сынып пен тоқсан бойынша сабақ жоспарлары</p>
+        </div>
+    </div>
+
+    <!-- СЫНЫП ТАБТАРЫ -->
+    <div class="kmj-tabs">
+        <button class="kmj-tab active" onclick="switchKMJClass('7', this)">7 сынып</button>
+        <button class="kmj-tab" onclick="switchKMJClass('8', this)">8 сынып</button>
+        <button class="kmj-tab" onclick="switchKMJClass('9', this)">9 сынып</button>
+    </div>
+
+    <!-- ТОҚСАН ТАБТАРЫ -->
+    <div class="kmj-quarter-tabs" id="kmjQuarterTabs">
+        <button class="kmj-quarter active" onclick="switchKMJQuarter('1', this)">1 тоқсан</button>
+        <button class="kmj-quarter" onclick="switchKMJQuarter('2', this)">2 тоқсан</button>
+        <button class="kmj-quarter" onclick="switchKMJQuarter('3', this)">3 тоқсан</button>
+        <button class="kmj-quarter" onclick="switchKMJQuarter('4', this)">4 тоқсан</button>
+    </div>
+
+    <!-- ФАЙЛДАР ТІЗІМІ -->
+    <div id="kmjFileList" class="kmj-file-list"></div>
 
 </section>
 
